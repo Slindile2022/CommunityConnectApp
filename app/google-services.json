@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "717302131161",
+    "firebase_url": "https://community-connect-f19a9-default-rtdb.firebaseio.com",
+    "project_id": "community-connect-f19a9",
+    "storage_bucket": "community-connect-f19a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:717302131161:android:1d896a684de43a8f3791c8",
+        "android_client_info": {
+          "package_name": "com.example.communityconnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "717302131161-6pt3hj0ibrl36top0nc4e1tmcgmmbfhk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsPyEApSxu_b01xWFFYbg9XUWRH8ir-AI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "717302131161-6pt3hj0ibrl36top0nc4e1tmcgmmbfhk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

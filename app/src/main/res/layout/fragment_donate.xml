@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DonateFragment">
+
+
+
+
+    <!-- tool bar-->
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:padding="10dp"
+        android:background="@drawable/shape_toolbar011">
+
+        <TextView
+            android:id="@+id/balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Balance : R0 000, 00"
+            android:textColor="@color/blue01"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            />
+
+
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/searchPost"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/toolbarRl"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <!-- search view -->
+
+        <EditText
+            android:id="@+id/searchAllPost1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="120dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="10dp"
+            android:layout_toLeftOf="@+id/searchAllPost"
+            android:background="@drawable/edit_text_rounded_corner"
+            android:hint="search open donation"
+            android:inputType="text"
+            android:padding="10dp" />
+
+        <ImageButton
+            android:id="@+id/searchAllPost"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/transparent"
+            android:padding="4dp"
+            android:src="@drawable/baseline_search_2" />
+
+        <ImageButton
+            android:id="@+id/addPostBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="0dp"
+            android:background="@android:color/transparent"
+            android:padding="4dp"
+            android:visibility="gone"
+            android:src="@drawable/baseline_add_circle_2" />
+
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_below="@+id/searchPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--  recycle view show orders -->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/allPostsEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_donate" />
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

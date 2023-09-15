@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PostActivity">
+
+    <!-- toll bar-->
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="10dp"
+        android:background="@drawable/shape_admin">
+
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="publish post"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
+
+
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <!-- Tile of the post-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/pTitleTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/pTitleEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_rect02"
+                    android:drawablePadding="10dp"
+                    android:hint="Enter Title"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey" />
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!-- image to attach-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/pImageIvTill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pTitleTil"
+                app:hintEnabled="false">
+
+                <ImageView
+                    android:id="@+id/pImageIvEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/blue01"
+                    android:drawablePadding="10dp"
+                    android:minHeight="200dp"
+                    android:scaleType="fitCenter"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                     />
+                <TextView
+                    android:id="@+id/textHint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="click on the blue color to add a photo"
+                    android:textColor="@color/blue01"
+                    android:textSize="20sp"
+                    android:layout_centerInParent="true"/>
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <!-- email-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/pDescTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pImageIvTill"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/pDescEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_rect02"
+                    android:gravity="start"
+                    android:drawablePadding="10dp"
+                    android:hint="Write your post description here"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:minHeight="120dp"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"/>
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!-- Register button-->
+
+            <Button
+                android:id="@+id/uploadBtn"
+                android:layout_width="127dp"
+                android:layout_height="wrap_content"
+                android:theme="@style/Base.Theme.MaterialComponents.Light.NoActionBar"
+                android:backgroundTint="@color/blue01"
+                android:layout_below="@id/pDescTil"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="27dp"
+                android:text="Upload"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+
+</LinearLayout>

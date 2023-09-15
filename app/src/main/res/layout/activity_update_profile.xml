@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateProfileActivity">
+
+
+    <!-- tool bar-->
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="10dp"
+        android:background="@drawable/shape_admin1">
+
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Profile Update"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+
+
+
+
+    </RelativeLayout>
+    <!-- tool bar-->
+
+    <RelativeLayout
+        android:id="@+id/toolbarRl"
+        android:layout_below="@+id/toolbarRl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:background="@drawable/shape_admin">
+
+
+        <TextView
+            android:id="@+id/logoutBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="Joined since 12 Aug 2023"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+
+
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/profile"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="2dp"
+            app:civ_border_overlay="true" />
+
+        <ImageButton
+            android:id="@+id/cameraEt"
+            android:layout_width="18dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/profile_image"
+            android:layout_marginStart="0dp"
+            android:layout_marginBottom="2dp"
+            android:layout_toEndOf="@id/profile_image"
+            android:background="@android:color/transparent"
+            android:src="@drawable/baseline_photo_camera_24"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_below="@+id/toolbarRl"
+        android:layout_marginTop="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <!-- Name-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Base.Theme.MaterialComponents.Light.NoActionBar"
+                app:hintEnabled="false">
+
+                <TextView
+                    android:id="@+id/nameEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittex01"
+                    android:drawableStart="@drawable/baseline_person_24"
+                    android:drawablePadding="10dp"
+                    android:hint="Full Names"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey" />
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!-- Second name-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/secondNameTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Base.Theme.MaterialComponents.Light.NoActionBar"
+                android:layout_below="@+id/nameTil"
+                app:hintEnabled="false">
+
+                <TextView
+                    android:id="@+id/secondNameEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittex01"
+                    android:drawableStart="@drawable/baseline_person_24"
+                    android:drawablePadding="10dp"
+                    android:hint="Surname"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey" />
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <!-- email-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Base.Theme.MaterialComponents.Light.NoActionBar"
+                android:layout_below="@+id/secondNameTil"
+                app:hintEnabled="false">
+
+                <TextView
+                    android:id="@+id/emailEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittex01"
+                    android:drawableStart="@drawable/baseline_email_24"
+                    android:drawablePadding="10dp"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"/>
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--Phone numbers email-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phoneTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Base.Theme.MaterialComponents.Light.NoActionBar"
+                android:layout_below="@+id/emailTil"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/phoneEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittex01"
+                    android:drawableStart="@drawable/baseline_phone_24"
+                    android:drawablePadding="10dp"
+                    android:hint="phone number"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"/>
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+            <!-- CONFIRM password-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addressTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Base.Theme.MaterialComponents.Light.NoActionBar"
+                android:layout_below="@+id/phoneTil"
+                android:layout_marginTop="5dp"
+                app:hintEnabled="false">
+
+                <TextView
+                    android:id="@+id/addressEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittex01"
+                    android:drawableStart="@drawable/baseline_location_city_24"
+                    android:drawablePadding="10dp"
+                    android:hint="enter address"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:padding="10dp"
+                    android:textColorHint="@color/grey"/>
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+            <!-- Register button-->
+
+            <Button
+                android:id="@+id/updateBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/addressTil"
+                android:layout_marginTop="20dp"
+                android:theme="@style/Base.Theme.MaterialComponents.Light.NoActionBar"
+                android:text="Update"
+                android:backgroundTint="@color/blue01"
+                android:textColor="@color/white"/>
+
+        </RelativeLayout>
+
+
+
+    </ScrollView>
+
+
+
+
+
+
+
+
+</RelativeLayout>

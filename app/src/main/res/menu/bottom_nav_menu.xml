@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:title="Home"
+        android:id="@+id/home"
+        android:icon="@drawable/baseline_home">
+
+    </item>
+    <item android:title="Donate"
+        android:id="@+id/donate"
+        android:icon="@drawable/baseline_attach_money">
+
+    </item>
+    <item android:title="Events"
+        android:id="@+id/events"
+        android:icon="@drawable/baseline_emoji_events">
+
+    </item>
+
+    <!--
+    <item android:title="Profile"
+        android:id="@+id/profile"
+        android:icon="@drawable/baseline_person">
+
+    </item>
+
+    -->
+
+</menu>

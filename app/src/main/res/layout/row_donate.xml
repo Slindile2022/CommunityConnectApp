@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="1dp"
+    app:cardElevation="3dp"
+    app:contentPadding="10dp">
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top">
+
+        <ImageView
+            android:id="@+id/productIconTv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/baseline_attach_money_24"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_toEndOf="@id/productIconTv"
+            >
+
+
+            <TextView
+                android:id="@+id/titleTv"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="0dp"
+                android:text="donation title"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+
+
+            <TextView
+                android:id="@+id/descriptionTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="donation description"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/seeMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="See More"
+                android:clickable="true"
+                android:textSize="10dp"
+                android:focusable="true"
+                android:textColor="@color/grey"
+                android:layout_marginTop="4dp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/seeLess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="See Less"
+                android:clickable="true"
+                android:textSize="10dp"
+                android:focusable="true"
+                android:textColor="@color/grey"
+                android:layout_marginTop="4dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|bottom"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginBottom="0dp">
+
+                <TextView
+                    android:id="@+id/postedBy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="From Non profitable organization"
+                    android:singleLine="true"
+                    android:paddingStart="0dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/verified_icon"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/baseline_verified_24"
+                    android:layout_marginStart="4dp"
+                    android:visibility="visible"
+                    android:layout_gravity="center_vertical" />
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/addToCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center"
+                android:text="Donate"
+                android:textColor="@color/blue01"
+                android:paddingEnd="3dp"
+                android:layout_marginTop="5dp"
+                android:drawableStart="@drawable/baseline_attach_money_24"
+                android:gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/totalAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center"
+                android:text="Total amount : R589,00"
+                android:textSize="12sp"
+                android:alpha="0.5"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"/>
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>
