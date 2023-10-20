@@ -12,18 +12,34 @@
     <RelativeLayout
         android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="80dp"
         android:padding="10dp"
         android:background="@drawable/shape_toolbar011">
 
         <TextView
+            android:id="@+id/mankweng"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Community Connect"
+            android:text="MANKWENG"
             android:textColor="@color/blue01"
             android:textSize="23sp"
             android:textStyle="bold"
             />
+
+
+        <TextView
+            android:layout_below="@+id/mankweng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="community connect"
+            android:textColor="@color/blue01"
+            android:textSize="18sp"
+
+            />
+
+
+
+
 
         <ImageButton
             android:id="@+id/menuBtn"

@@ -152,8 +152,11 @@ public class ProofOfPaymentsActivity extends AppCompatActivity {
 
 
                             firebaseDatabase = FirebaseDatabase.getInstance();
-                            DatabaseReference databaseReference = firebaseDatabase.getReference().child("PaymentFiles"); // Get the DatabaseReference
-                            Query query = databaseReference.orderByChild("uid").equalTo(firebaseAuth.getUid()); // Apply query to DatabaseReference
+                            // Get the DatabaseReference
+                            DatabaseReference databaseReference = firebaseDatabase.getReference().child("PaymentFiles");
+
+                            // Apply query to DatabaseReference to make sure that you can see only the transactions corresponding to your uid
+                            Query query = databaseReference.orderByChild("uid").equalTo(firebaseAuth.getUid());
                             recyclerView = binding.proofOfPayments;
                             recyclerView.setHasFixedSize(true);
                             recyclerView.setLayoutManager(new LinearLayoutManager(ProofOfPaymentsActivity.this));

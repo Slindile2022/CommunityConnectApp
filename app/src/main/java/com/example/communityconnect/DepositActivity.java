@@ -132,6 +132,11 @@ public class DepositActivity extends AppCompatActivity {
             return;
 
         }
+        else if (pdfUri == null){
+
+            Toast.makeText(this, "Please attach proof of payment", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
 
 
@@ -260,6 +265,8 @@ public class DepositActivity extends AppCompatActivity {
                         // Clear EditText fields to allow another user to be registered
                         binding.nameEt.setText("");
                         binding.secondNameEt.setText("");
+
+
 
 
 

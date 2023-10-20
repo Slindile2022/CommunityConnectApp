@@ -104,9 +104,9 @@
                 android:textColor="@android:color/black"/>
 
                 <ImageButton
+                    android:id="@+id/moreBtn"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:id="@+id/moreBtn"
                     android:background="@drawable/more"/>
 
             </LinearLayout>

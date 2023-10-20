@@ -61,7 +61,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     //getting constructor
 
-    String myUid, myUserType;
+    String myUid, myUserType, idOfThePostOwner, thePostOwnerProfileImage;
 
 
     private DatabaseReference likesRef;
@@ -101,6 +101,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 });
 
 
+
+
     }
 
     @NonNull
@@ -129,6 +131,31 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         String userName = postData.getUserName();
         String userProfileImage = postData.getProfileImage();
 
+
+
+        //set the id of the post owner
+        idOfThePostOwner = uid;
+
+        //procedure to check the usertype
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        databaseReference.child(idOfThePostOwner)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //get user type
+
+                        String thePostOwnerProfileImage1 = "" + snapshot.child("profileImage").getValue();
+                        thePostOwnerProfileImage = thePostOwnerProfileImage1;
+
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
 
 
@@ -261,17 +288,41 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             int minutesAgo = (int) (timeDifference / DateUtils.MINUTE_IN_MILLIS);
             int hoursAgo = minutesAgo / 60;
             if (minutesAgo < 60) {
-                String timeText =  minutesAgo + " minutes ago";
+                if(minutesAgo == 0){
+                    //display just now
+                    String timeText =  "just now";
+                    holder.timePosted.setText(timeText);
+                } else if (minutesAgo == 1) {
+                    //remove the s at the end
+                    String timeText =  minutesAgo + " minute ago";
+                    holder.timePosted.setText(timeText);
+                }
+                else {
+                    String timeText =  minutesAgo + " minutes ago";
+                    holder.timePosted.setText(timeText);
+                }
+
+            } else if(minutesAgo >= 60 && minutesAgo <= 120){
+                String timeText = hoursAgo + " hour ago";
                 holder.timePosted.setText(timeText);
-            } else if(minutesAgo >= 60){
+            }
+            else {
                 String timeText = hoursAgo + " hours ago";
                 holder.timePosted.setText(timeText);
             }
         } else if (timeDifference < DateUtils.WEEK_IN_MILLIS) {
             // If the time difference is less than a week, display the number of days ago
             int daysAgo = (int) (timeDifference / DateUtils.DAY_IN_MILLIS);
-            String timeText =  daysAgo + " days ago";
-            holder.timePosted.setText(timeText);
+
+            if (daysAgo == 1){
+                String timeText =  "yesterday";
+                holder.timePosted.setText(timeText);
+            }
+            else {
+                String timeText =  daysAgo + " days ago";
+                holder.timePosted.setText(timeText);
+            }
+
         } else {
             // If it's more than a week, display the date and time in the desired format
             Calendar calendar = Calendar.getInstance();

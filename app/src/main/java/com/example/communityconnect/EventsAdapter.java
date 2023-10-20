@@ -106,6 +106,16 @@ public abstract class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.V
             holder.verificationIcon.setVisibility(View.GONE);
         }
 
+        if (userId.equals(myUid)){
+
+            //the see more button must be visible as the owner
+            holder.moreBtn.setVisibility(View.VISIBLE);
+        }
+        else {
+            //remove the see more button
+            holder.moreBtn.setVisibility(View.GONE);
+        }
+
 
         // Parsing the eventDate to extract day, month, and date
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
@@ -321,24 +331,7 @@ public abstract class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.V
 
                                 }
 
-//                                //add the data again but now
-//
-//                                // Initialize the Firebase Database instance
-//                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-//
-//                                final String timestamp= "" + System.currentTimeMillis();
-//
-//                                String timeStamp = timestamp;
-//                                Events events = new Events(timeStamp, userName, userId, userType, eventTitle, eventDescription, eventTime, eventDate, "Completed", pLikes);
-//
-//                                firebaseDatabase.getReference("CompletedEvents").child(timestamp).setValue(events).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                    @Override
-//                                    public void onSuccess(Void aVoid) {
-//                                        //if event was added on the realtime database
-//
-//                                    }
-//                                });
-//                                pd.dismiss();
+                              pd.dismiss();
                             }
 
                             @Override

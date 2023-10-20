@@ -185,9 +185,25 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
             int minutesAgo = (int) (timeDifference / DateUtils.MINUTE_IN_MILLIS);
             int hoursAgo = minutesAgo / 60;
             if (minutesAgo < 60) {
-                String timeText =  minutesAgo + " minutes ago";
+                if(minutesAgo == 0){
+                    //display just now
+                    String timeText =  "just now";
+                    holder.timePosted.setText(timeText);
+                } else if (minutesAgo == 1) {
+                    //remove the s at the end
+                    String timeText =  minutesAgo + " minute ago";
+                    holder.timePosted.setText(timeText);
+                }
+                else {
+                    String timeText =  minutesAgo + " minutes ago";
+                    holder.timePosted.setText(timeText);
+                }
+
+            } else if(minutesAgo >= 60 && minutesAgo <= 120){
+                String timeText = hoursAgo + " hour ago";
                 holder.timePosted.setText(timeText);
-            } else if(minutesAgo >= 60){
+            }
+            else {
                 String timeText = hoursAgo + " hours ago";
                 holder.timePosted.setText(timeText);
             }

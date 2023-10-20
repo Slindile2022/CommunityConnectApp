@@ -43,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:theme="@style/Base.Theme.MaterialComponents.Light.NoActionBar"
             app:passwordToggleEnabled="true"
             app:hintEnabled="false">
 
@@ -57,8 +58,7 @@
                 android:inputType="textPassword"
                 android:padding="10dp"
                 android:textColor="@color/black"
-                android:textColorHint="@color/blue01"/>
-
+                android:textColorHint="@color/blue01" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -69,6 +69,7 @@
             android:id="@+id/cPasswordTil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:theme="@style/Base.Theme.MaterialComponents.Light.NoActionBar"
             android:layout_below="@+id/passwordTil"
             android:layout_marginTop="5dp"
             app:passwordToggleEnabled="true"
@@ -101,7 +102,9 @@
             android:id="@+id/submitBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue01"
             android:layout_below="@+id/cPasswordTil"
+            android:theme="@style/Base.Theme.MaterialComponents.Light.NoActionBar"
             android:layout_marginTop="10dp"
             android:text="submit"
             android:textColor="@color/white"

@@ -149,20 +149,33 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
 
                                         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(firebaseAuth.getUid());
-                                        reference.child("passwordChanged").setValue("yes");
+                                        reference.child("passwordChanged").setValue("yes")
+                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void unused) {
+                                                        //dismiss the dialog
+                                                        progressDialog.dismiss();
 
-                                        //dismiss the dialog
-                                        progressDialog.dismiss();
+                                                        //log out the user
 
-                                        //log out the user
+                                                        firebaseAuth.signOut();
 
-                                        firebaseAuth.signOut();
-
-                                        Toast.makeText(ChangePasswordActivity.this, "Password updated, you can now log in", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(ChangePasswordActivity.this, LoginActivity.class));
+                                                        Toast.makeText(ChangePasswordActivity.this, "Password updated, you can now log in", Toast.LENGTH_SHORT).show();
+                                                        startActivity(new Intent(ChangePasswordActivity.this, LoginActivity.class));
 
 
-                                        finish();
+                                                        finish();
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        //failed to update the password
+                                                        Toast.makeText(ChangePasswordActivity.this, "Failed to update password", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+
+
 
                                     }
                                 })

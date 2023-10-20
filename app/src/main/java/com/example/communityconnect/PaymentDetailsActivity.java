@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,7 +28,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class PaymentDetailsActivity extends AppCompatActivity {
 
@@ -38,7 +42,7 @@ public class PaymentDetailsActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
 
 
-    String userNames, timeStamp, status, phoneNumber, pdfLink, userId, postId, userType, currentUserType;
+    String userNames, date, status, phoneNumber, pdfLink, userId, postId, userType, currentUserType;
 
 
     @Override
@@ -50,7 +54,7 @@ public class PaymentDetailsActivity extends AppCompatActivity {
         //getting the values
         Intent intent = getIntent();
         userNames = intent.getStringExtra("userNames");
-        timeStamp = intent.getStringExtra("timeStamp");
+        date = intent.getStringExtra("timeStamp");
         status = intent.getStringExtra("status");
         phoneNumber = intent.getStringExtra("phoneNumber");
         pdfLink = intent.getStringExtra("pdfLink");
@@ -60,8 +64,78 @@ public class PaymentDetailsActivity extends AppCompatActivity {
 
         //assigning those values to binding
         binding.nameTv.setText(userNames);
-        binding.dateTv.setText(timeStamp);
         binding.statusTv.setText(status);
+
+
+        //setting the date and time the proof of payment was uploaded
+
+        // Get the timestamp of the post (you mentioned it's in the orderTime variable)
+        long postTimestamp = Long.parseLong(postId);
+        long currentTimestamp = System.currentTimeMillis();
+
+        // Calculate the time difference in milliseconds
+        long timeDifference = currentTimestamp - postTimestamp;
+
+        // Get the relative time span string based on the time difference
+        CharSequence timeAgo = DateUtils.getRelativeTimeSpanString(postTimestamp, currentTimestamp, DateUtils.MINUTE_IN_MILLIS);
+
+        // If the time difference is less than an hour, display "just now" or the number of minutes
+        if (timeDifference < DateUtils.SECOND_IN_MILLIS) {
+            // Set the time ago text
+            binding.dateTv.setText("just now");
+        } else if (timeDifference < DateUtils.DAY_IN_MILLIS) {
+            // If the time difference is less than a day, display the number of minutes or "hour ago" if it's just over an hour
+            int minutesAgo = (int) (timeDifference / DateUtils.MINUTE_IN_MILLIS);
+            int hoursAgo = minutesAgo / 60;
+            if (minutesAgo < 60) {
+                if(minutesAgo == 0){
+                    //display just now
+                    String timeText =  "just now";
+                    binding.dateTv.setText(timeText);
+
+                } else if (minutesAgo == 1) {
+                    //remove the s at the end
+                    String timeText =  minutesAgo + " minute ago";
+                    binding.dateTv.setText(timeText);
+                }
+                else {
+                    String timeText =  minutesAgo + " minutes ago";
+                    binding.dateTv.setText(timeText);
+                }
+
+            } else if(minutesAgo >= 60 && minutesAgo <= 120){
+                String timeText = hoursAgo + " hour ago";
+                binding.dateTv.setText(timeText);
+            }
+            else {
+                String timeText = hoursAgo + " hours ago";
+                binding.dateTv.setText(timeText);
+            }
+        } else if (timeDifference < DateUtils.WEEK_IN_MILLIS) {
+            // If the time difference is less than a week, display the number of days ago
+            int daysAgo = (int) (timeDifference / DateUtils.DAY_IN_MILLIS);
+
+            if (daysAgo == 1){
+                String timeText =  "yesterday";
+                binding.dateTv.setText(timeText);
+            }
+            else {
+                String timeText =  daysAgo + " days ago";
+                binding.dateTv.setText(timeText);
+            }
+
+        } else {
+            // If it's more than a week, display the date and time in the desired format
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(postTimestamp);
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM HH:mm", Locale.ENGLISH);
+            String formattedDateTime = dateFormat.format(calendar.getTime());
+
+            // Set the date and time text
+            binding.dateTv.setText(formattedDateTime);
+        }
+
 
 
 
