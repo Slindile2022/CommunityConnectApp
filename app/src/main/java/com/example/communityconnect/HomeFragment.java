@@ -103,6 +103,7 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+
         //handle update profile button
         binding.addPostBtn.setOnClickListener(new View.OnClickListener() {
             @Override

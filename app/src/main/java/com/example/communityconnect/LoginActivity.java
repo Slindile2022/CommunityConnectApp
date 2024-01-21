@@ -32,6 +32,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -40,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
 
     //firebase auth
     private FirebaseAuth firebaseAuth;
+
+    String TAG = "results";
 
     //progress dialog
 
@@ -60,6 +65,8 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("please wait");
         progressDialog.setCanceledOnTouchOutside(false);
+
+
 
         //handle click forgot password
 
@@ -94,17 +101,83 @@ public class LoginActivity extends AppCompatActivity {
         password = binding.passwordEt.getText().toString().trim();
 
 
+        //validation of phone number
+
+        String mobileRegex = "[0][6-8][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"; // validation of south africa phone number
+        Matcher matcher;
+
+        Pattern mobilePattern = Pattern.compile(mobileRegex);
+        matcher = mobilePattern.matcher(email);
+
+
         if (email.isEmpty()){
-            Toast.makeText(this, "Enter email", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Enter email or phone number", Toast.LENGTH_SHORT).show();
         }
 
-        else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            Toast.makeText(this, "invalid email", Toast.LENGTH_SHORT).show();
+         else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches() && !matcher.find()) {
+            Toast.makeText(this, "invalid email or phone number", Toast.LENGTH_SHORT).show();
         }
+
+
+        //|| !matcher.find()
         else if(TextUtils.isEmpty(password)){
             Toast.makeText(this, "enter password", Toast.LENGTH_SHORT).show();
         }
-        else{
+        else if (email.length() == 10){
+
+
+            try {
+
+
+                //the phone number is valid
+
+                //check if the app is accessible or not before a user can start using it
+
+
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("PhoneLogin");
+                databaseReference
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                //get user type
+
+                                String phoneNumberEmailAddress =""+snapshot.child(email).getValue();
+
+                                //set the email address to that corresponding to the phone number registered
+
+                                Log.d("dead", "the email address is : "+phoneNumberEmailAddress);
+
+                                email = phoneNumberEmailAddress;
+
+
+
+
+                                Log.d("dead", "the email address after  is : "+email);
+
+
+                                //begin logging in user
+                                loginUser();
+
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+
+            }
+            catch (Exception e){
+                //do nothing just proceed
+            }
+
+
+
+        }
+        else {
+
             //begin logging in user
             loginUser();
         }
@@ -119,6 +192,8 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.show();
 
         //login user
+
+        Log.d("dead", "login details : "+email+ " "+password);
 
         firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
