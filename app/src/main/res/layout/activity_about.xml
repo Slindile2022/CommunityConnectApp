@@ -51,7 +51,7 @@
         android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="The Community Connect platform is designed to create a more connected and empowered community by providing an inclusive and accessible space for skill-sharing, community announcements, emergency alerts, secure donations, volunteer matchmaking, and community forums. The platform will prioritize user privacy and safety through encryption and verification mechanisms."
+        android:text="At Community Connect, we envision a world where communities thrive through open communication, shared interests, and supportive networks. This app is the embodiment of that vision, empowering users to connect with like-minded individuals, discover local events, and contribute to the vibrancy of their communities."
          />
 
 
