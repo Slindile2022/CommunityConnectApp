@@ -51,8 +51,10 @@
         android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="At Community Connect, we envision a world where communities thrive through open communication, shared interests, and supportive networks. This app is the embodiment of that vision, empowering users to connect with like-minded individuals, discover local events, and contribute to the vibrancy of their communities."
+        android:text="Contact Us: \nHave questions or feedback? We'd love to hear from you! Reach out to us at slindilerowen@gmail.com or visit our website at www.communityconnectapp.com.\n \n  \n \n \n \n \n \n \n \nThank you for being a part of the Community Connect family!"
+        android:clickable="true"
          />
+
 
 
 
